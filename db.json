@@ -1,0 +1,53 @@
+{
+  "todos": [
+    {
+      "id": 1,
+      "title": "Study ReactJS",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
+      "done": false
+    },
+    {
+      "id": 2,
+      "title": "Study AngularJS",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
+      "done": false
+    },
+    {
+      "id": 3,
+      "title": "Finish Masters Dissertation",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
+      "done": false
+    },
+    {
+      "id": 4,
+      "title": "Do therapy",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
+      "done": false
+    },
+    {
+      "id": 5,
+      "title": "Go to gym",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
+      "done": false
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "username": "admin",
+      "password": "admin"
+    },
+    {
+      "gender": "male",
+      "username": "charles_cc",
+      "email": "charlescaguiar@hotmail.com",
+      "emailConfirmation": "charlescaguiar@hotmail.com",
+      "password": "admin",
+      "occupation": {
+        "value": 1,
+        "label": "Developer"
+      },
+      "id": 2
+    }
+  ]
+}
