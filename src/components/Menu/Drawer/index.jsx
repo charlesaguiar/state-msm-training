@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 
 import { Box, Drawer as MuiDrawer, Divider } from '@mui/material';
 
@@ -7,12 +7,19 @@ import MenuList from './MenuList';
 
 import menu from 'utils/menu';
 
-function Drawer() {
+function Drawer({ open, isMobile, toggleDrawer }) {
 	const [selectedMenu, setSelectedMenu] = useState(1);
+
+	const handleMenuSelection = useCallback((value) => {
+		setSelectedMenu(value);
+		toggleDrawer();
+	}, []);
 
 	return (
 		<MuiDrawer
-			variant="permanent"
+			variant={isMobile ? 'temporary' : 'permanent'}
+			open={open}
+			onClose={toggleDrawer}
 			sx={{
 				width: 240,
 				flexShrink: 0,
@@ -25,12 +32,12 @@ function Drawer() {
 					grow={1}
 					menu={menu.filter((m) => !m.bottom)}
 					selected={selectedMenu}
-					setSelected={setSelectedMenu}
+					onMenuSelection={handleMenuSelection}
 				/>
 				<MenuList
 					menu={menu.filter((m) => m.bottom)}
 					selected={selectedMenu}
-					setSelected={setSelectedMenu}
+					onMenuSelection={handleMenuSelection}
 				/>
 			</Box>
 		</MuiDrawer>

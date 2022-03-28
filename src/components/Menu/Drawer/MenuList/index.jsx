@@ -5,12 +5,12 @@ import { useTheme } from '@mui/material/styles';
 
 import { List, ListItem, ListItemIcon, ListItemText } from '@mui/material';
 
-function MenuList({ grow = 0, menu, selected, setSelected }) {
+function MenuList({ grow = 0, menu, selected, onMenuSelection }) {
 	const theme = useTheme();
 	const navigate = useNavigate();
 
 	const navigateTo = useCallback((id, path) => {
-		setSelected(id);
+		onMenuSelection(id);
 		navigate(path);
 	}, []);
 

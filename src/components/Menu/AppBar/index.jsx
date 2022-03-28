@@ -1,11 +1,11 @@
-import React from 'react';
-
 import { AppBar as MuiAppBar, IconButton, Toolbar, Typography } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 
 import { MdViewHeadline } from 'react-icons/md';
 
-function AppBar({ title, isMobile }) {
+import PopoverMenu from '../AppBar/PopoverMenu';
+
+function AppBar({ title, isMobile, toggleDrawer }) {
 	const theme = useTheme();
 
 	return (
@@ -18,13 +18,15 @@ function AppBar({ title, isMobile }) {
 			}}>
 			<Toolbar sx={{ justifyContent: 'space-between' }}>
 				{isMobile && (
-					<IconButton>
+					<IconButton onClick={toggleDrawer}>
 						<MdViewHeadline size={30} color="white" />
 					</IconButton>
 				)}
 				<Typography variant="h6" noWrap component="div">
 					{title}
 				</Typography>
+
+				<PopoverMenu />
 			</Toolbar>
 		</MuiAppBar>
 	);

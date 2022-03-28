@@ -28,6 +28,7 @@ import { MdAccountCircle, MdLock, MdEmail, MdMarkEmailRead } from 'react-icons/m
 import Constants from 'utils/constants';
 import Messages from 'utils/messages';
 import ToastOptions from 'utils/toast';
+import { hasError } from 'utils/error';
 
 import { container, form, stack, caption } from './styles';
 
@@ -53,7 +54,7 @@ function Register() {
 	const loadingAuth = useAuthStore(useCallback((s) => s.loading, []));
 
 	useToast(success, { ...ToastOptions.getSuccessToastOptions('User registred with sucess!') });
-	useToast(error, { ...ToastOptions.getErrorToastOptions(error?.message) });
+	useToast(hasError(error), { ...ToastOptions.getErrorToastOptions(error?.message) });
 
 	const onSubmitValidNewUser = useCallback(async (user) => {
 		await create({ ...user });

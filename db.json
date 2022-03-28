@@ -48,6 +48,18 @@
         "label": "Developer"
       },
       "id": 2
+    },
+    {
+      "gender": "male",
+      "username": "charles_cc2",
+      "email": "charlescaguiar@hotmail.com",
+      "emailConfirmation": "charlescaguiar@hotmail.com",
+      "password": "admin",
+      "occupation": {
+        "value": 4,
+        "label": "Architect"
+      },
+      "id": 3
     }
   ]
 }

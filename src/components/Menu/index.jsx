@@ -1,4 +1,4 @@
-import React from 'react';
+import { useCallback, useState } from 'react';
 
 import { Box } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
@@ -10,11 +10,18 @@ import Drawer from './Drawer';
 function Menu({ children }) {
 	const theme = useTheme();
 	const isMobile = useMediaQuery(theme.breakpoints.down('md'));
+	const [openDrawer, setOpenDrawer] = useState(false);
+
+	const toggleDrawer = useCallback(() => {
+		setOpenDrawer((prev) => !prev);
+	}, []);
+
+	console.log({ openDrawer });
 
 	return (
 		<Box sx={{ display: 'flex' }}>
-			<AppBar title="Multi Task App" isMobile={isMobile} />
-			{!isMobile && <Drawer />}
+			<AppBar title="Multi Task App" isMobile={isMobile} toggleDrawer={toggleDrawer} />
+			<Drawer isMobile={isMobile} open={openDrawer} toggleDrawer={toggleDrawer} />
 			<Box component="main" sx={{ flexGrow: 1, p: 3, mt: `${theme.appBarHeight}px` }}>
 				{children}
 			</Box>

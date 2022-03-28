@@ -5,13 +5,15 @@ const useToast = (visible, options) => {
 	const show = useToastStore(useCallback((s) => s.show, []));
 	const hide = useToastStore(useCallback((s) => s.hide, []));
 
+	console.log('TRACE HOOK', { visible });
+
 	useEffect(() => {
 		if (visible) {
 			show({ ...options });
 		} else {
 			hide();
 		}
-	}, [visible]);
+	}, [visible, options]);
 };
 
 export default useToast;

@@ -9,6 +9,7 @@ import { LoadingButton } from '@mui/lab';
 import { MdAccountCircle, MdLock } from 'react-icons/md';
 
 import ToastOptions from 'utils/toast';
+import { hasError } from 'utils/error';
 
 import { container, form, stack, caption } from './styles';
 
@@ -19,7 +20,9 @@ function Login() {
 	const loading = useAuthStore(useCallback((s) => s.loading, []));
 	const error = useAuthStore(useCallback((s) => s.error, []));
 
-	useToast(error, { ...ToastOptions.getErrorToastOptions(error?.message) });
+	useToast(hasError(error), {
+		...ToastOptions.getErrorToastOptions(error?.message),
+	});
 
 	const [credentials, setCredentials] = useState({ username: '', password: '' });
 
@@ -49,6 +52,8 @@ function Login() {
 						value={credentials.username}
 						onChange={(e) => handleChange('username', e.target.value)}
 						label="username"
+						autoComplete="new-password"
+						autoFocus
 						InputProps={{
 							startAdornment: (
 								<InputAdornment position="start">
