@@ -3,7 +3,7 @@ import { useTheme } from '@mui/material/styles';
 
 import { MdViewHeadline } from 'react-icons/md';
 
-import PopoverMenu from '../AppBar/PopoverMenu';
+import DesktopPopoverMenu from '../AppBar/PopoverMenu/Desktop';
 
 function AppBar({ title, isMobile, toggleDrawer }) {
 	const theme = useTheme();
@@ -26,7 +26,7 @@ function AppBar({ title, isMobile, toggleDrawer }) {
 					{title}
 				</Typography>
 
-				<PopoverMenu />
+				{!isMobile && <DesktopPopoverMenu />}
 			</Toolbar>
 		</MuiAppBar>
 	);

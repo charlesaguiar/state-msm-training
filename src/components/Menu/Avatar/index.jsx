@@ -6,7 +6,9 @@ import { Avatar as MuiAvatar, Box, Typography } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import { deepPurple } from '@mui/material/colors';
 
-function Avatar() {
+import MobilePopoverMenu from 'components/Menu/AppBar/PopoverMenu/Mobile';
+
+function Avatar({ isMobile }) {
 	const theme = useTheme();
 	const loggedUser = useAuthStore(useCallback((s) => s.user, []));
 
@@ -27,6 +29,7 @@ function Avatar() {
 				{loggedUser.avatar ? '' : loggedUser.username[0].toUpperCase()}
 			</MuiAvatar>
 			<Typography sx={{ fontWeight: 'bold' }}>{loggedUser.username}</Typography>
+			{isMobile && <MobilePopoverMenu />}
 		</Box>
 	);
 }

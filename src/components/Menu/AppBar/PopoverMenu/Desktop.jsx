@@ -5,7 +5,7 @@ import useAuthStore from 'stores/authStore';
 import { Box, Container, Divider, Popover, Typography } from '@mui/material';
 import { MdAccountCircle, MdArrowDropDown, MdCircleNotifications, MdLogout } from 'react-icons/md';
 
-function PopoverMenu() {
+function DesktopPopoverMenu() {
 	const loggedUser = useAuthStore(useCallback((s) => s.user, []));
 	const logout = useAuthStore(useCallback((s) => s.logout, []));
 
@@ -78,4 +78,4 @@ function PopoverMenu() {
 	);
 }
 
-export default PopoverMenu;
+export default DesktopPopoverMenu;

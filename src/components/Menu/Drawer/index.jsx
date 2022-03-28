@@ -25,7 +25,7 @@ function Drawer({ open, isMobile, toggleDrawer }) {
 				flexShrink: 0,
 				[`& .MuiDrawer-paper`]: { width: 240, boxSizing: 'border-box' },
 			}}>
-			<Avatar />
+			<Avatar isMobile={isMobile} />
 			<Divider />
 			<Box sx={{ display: 'flex', flexDirection: 'column', height: '100%', overflow: 'auto' }}>
 				<MenuList
