@@ -10,9 +10,12 @@ const OCCUPATIONS = [
 	{ value: 7, label: 'Consultant' },
 ];
 
+const MENU_MOBILE_BREAKPOINT = 'md';
+
 const Constants = {
 	LOGGED_USER_KEY,
 	OCCUPATIONS,
+	MENU_MOBILE_BREAKPOINT,
 };
 
 export default Constants;

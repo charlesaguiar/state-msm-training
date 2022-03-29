@@ -6,10 +6,14 @@ import { Avatar as MuiAvatar, Box, Typography } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import { deepPurple } from '@mui/material/colors';
 
-import MobilePopoverMenu from 'components/Menu/AppBar/PopoverMenu/Mobile';
+import useMediaQuery from '@mui/material/useMediaQuery';
 
-function Avatar({ isMobile }) {
+import MobilePopoverMenu from 'components/Menu/AppBar/PopoverMenu/Mobile';
+import Constants from 'utils/constants';
+
+function Avatar() {
 	const theme = useTheme();
+	const isMobile = useMediaQuery(theme.breakpoints.down(Constants.MENU_MOBILE_BREAKPOINT));
 	const loggedUser = useAuthStore(useCallback((s) => s.user, []));
 
 	return (

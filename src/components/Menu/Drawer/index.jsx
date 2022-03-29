@@ -1,24 +1,25 @@
-import { useCallback, useState } from 'react';
+import { useCallback } from 'react';
+
+import useMenuStore from 'stores/menuStore';
 
 import { Box, Drawer as MuiDrawer, Divider } from '@mui/material';
+import { useTheme } from '@mui/material/styles';
+import useMediaQuery from '@mui/material/useMediaQuery';
 
 import Avatar from '../Avatar';
 import MenuList from './MenuList';
+import Constants from 'utils/constants';
 
-import menu from 'utils/menu';
-
-function Drawer({ open, isMobile, toggleDrawer }) {
-	const [selectedMenu, setSelectedMenu] = useState(1);
-
-	const handleMenuSelection = useCallback((value) => {
-		setSelectedMenu(value);
-		toggleDrawer();
-	}, []);
+function Drawer() {
+	const theme = useTheme();
+	const isMobile = useMediaQuery(theme.breakpoints.down(Constants.MENU_MOBILE_BREAKPOINT));
+	const isDrawerOpen = useMenuStore(useCallback((s) => s.isDrawerOpen, []));
+	const toggleDrawer = useMenuStore(useCallback((s) => s.toggleDrawer, []));
 
 	return (
 		<MuiDrawer
 			variant={isMobile ? 'temporary' : 'permanent'}
-			open={open}
+			open={isDrawerOpen}
 			onClose={toggleDrawer}
 			sx={{
 				width: 240,
@@ -28,17 +29,8 @@ function Drawer({ open, isMobile, toggleDrawer }) {
 			<Avatar isMobile={isMobile} />
 			<Divider />
 			<Box sx={{ display: 'flex', flexDirection: 'column', height: '100%', overflow: 'auto' }}>
-				<MenuList
-					grow={1}
-					menu={menu.filter((m) => !m.bottom)}
-					selected={selectedMenu}
-					onMenuSelection={handleMenuSelection}
-				/>
-				<MenuList
-					menu={menu.filter((m) => m.bottom)}
-					selected={selectedMenu}
-					onMenuSelection={handleMenuSelection}
-				/>
+				<MenuList grow={1} />
+				<MenuList />
 			</Box>
 		</MuiDrawer>
 	);
